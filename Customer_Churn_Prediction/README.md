@@ -16,6 +16,8 @@ Streamlit
 Joblib
 
 📂 Project Structure
+
+
 churn-prediction-app/
 │
 ├── app.py
@@ -23,6 +25,7 @@ churn-prediction-app/
 ├── requirements.txt
 ├── README.md
 └── Customer_Churn.ipynb
+
 
 
 📊 Machine Learning Workflow
@@ -69,10 +72,14 @@ To deploy the app:
 1. Upload all required project files to GitHub:
 
 Customer_Churn_Prediction/
+
+
 ├── app.py
 ├── churn_model.pkl
 ├── requirements.txt
 └── README.md
+
+
 Go to Streamlit Community Cloud.
 Sign in using your GitHub account.
 Click on Create App or New App.
@@ -92,7 +99,7 @@ churn_model.pkl
 
 So the model does not need to be trained again during deployment.
 
-You can place this after the **Requirements** section in your README.
+
 
 After connection established
 <img width="1234" height="702" alt="image" src="https://github.com/user-attachments/assets/8524bf40-0471-497c-bf5c-ce6a6d2d7848" />
