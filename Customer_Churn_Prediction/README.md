@@ -101,7 +101,7 @@ So the model does not need to be trained again during deployment.
 
 
 
-After connection established
+After the connection  established
 <img width="1234" height="702" alt="image" src="https://github.com/user-attachments/assets/8524bf40-0471-497c-bf5c-ce6a6d2d7848" />
 <img width="1366" height="637" alt="image" src="https://github.com/user-attachments/assets/1fbba83d-9e7e-44c1-a182-35f86d567032" />
 <img width="1365" height="643" alt="image" src="https://github.com/user-attachments/assets/63d44c3c-3ab4-4a73-9d7f-b0ae559015b5" />
