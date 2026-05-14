@@ -5,7 +5,7 @@ import numpy as np
 @st.cache_resource
 def load_model():
     # assumes churn_model.pk1 is in the SAME folder as this file
-    return joblib.load("churn_model.pk1")
+    return joblib.load("churn_model.pkl")
 
 model = load_model()
 
