@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 
 # Load the model
+model_path = os.path.join(os.path.dirname(__file__), "churn_model.pkl")
 with open('churn_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
