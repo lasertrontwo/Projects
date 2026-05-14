@@ -4,7 +4,7 @@ import numpy as np
 import os
 # Load the model
 model_path = os.path.join(os.path.dirname(__file__), "churn_model.pkl")
-with open('churn_model.pkl', 'rb') as f:
+with open(model_path, "rb") as f:
     model = pickle.load(f)
 
 st.title("Customer Churn Prediction")
