@@ -108,6 +108,9 @@ Source: Kaggle
 After entering a review, the app predicts whether the review is fake or genuine.
 
 Example output:
+<img width="1366" height="636" alt="image" src="https://github.com/user-attachments/assets/f3c0e24f-bc01-490a-a797-4247f8b1b837" />
+<img width="1366" height="633" alt="image" src="https://github.com/user-attachments/assets/ed359ed0-fb03-45c9-ba7e-b1709972694d" />
+
 
 Prediction: FAKE REVIEW
 Confidence: 92.45%
