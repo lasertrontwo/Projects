@@ -12,9 +12,6 @@ The dataset used is the MNIST Digit Recognizer dataset.
 
 Each image is represented as 784 pixel values because every image is 28 x 28 pixels.
 
-```text
-28 x 28 = 784
-
 Technologies Used
 Python
 NumPy
@@ -128,3 +125,13 @@ Conclusion
 This project demonstrates how a basic neural network works internally without using deep learning libraries like TensorFlow or PyTorch.
 
 source(datasets):https://www.kaggle.com/competitions/digit-recognizer/overview
+
+```text
+
+
+
+
+
+
+
+
