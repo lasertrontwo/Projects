@@ -93,11 +93,6 @@ The predicted digit is compared with the actual label.
 
 Matplotlib is used to display the handwritten digit image along with the model prediction.
 
-Project Files
-mnist-neural-network/
-├── mnist-dataset-training-for-neural-network.ipynb
-├── README.md
-└── train.csv
 How to Run
 Open the notebook in Jupyter Notebook, Google Colab, or Kaggle.
 Upload or connect the MNIST train.csv dataset.
