@@ -11,9 +11,19 @@ This project was natively developed and evaluated inside **Google Colab** using 
 ### 1. Where the Code is Written
 The core engine is contained within a single interactive notebook cell. To export the C++ source code from the Python environment into Colab's local Linux container workspace, the cell must begin with the `%%writefile` command:
 
-Mathematical Pipeline Architectural BlueprintThe engine operates on a strictly synchronized training loop split into four main core stages:Forward Pass: Calculates layer states via row-column dot products and applies non-linear activation filtering:$$H_{\text{linear}} = X \cdot W$$$$Y_{\text{pred}} = \max(0, H_{\text{linear}})$$Loss Computation: Evaluates performance via Mean Squared Error (MSE) and generates the initial root upstream error spark:$$\text{Loss} = \frac{1}{2}(Y_{\text{pred}} - \text{Target})^2$$$$\frac{\partial \text{Loss}}{\partial Y_{\text{pred}}} = Y_{\text{pred}} - \text{Target}$$Backpropagation (The Chain Rule): Filters gradients through the ReLU derivative and propagates adjustments upstream via simulated transposes:$$\delta_{\text{linear}} = \delta_{\text{loss}} \cdot \mathbb{I}(H_{\text{linear}} > 0)$$$$\frac{\partial \text{Loss}}{\partial W} = X^T \cdot \delta_{\text{linear}}$$Weight Optimization: Updates internal parameters by taking safe, controlled steps down the error valley:$$W = W - (\alpha \cdot \frac{\partial \text{Loss}}{\partial W})$$
+# Machine Learning Pipeline Blueprint
+The engine runs a continuous loop that repeatedly processes data, checks for mistakes, figures out who to blame, and adjusts itself. This happens in four clear stages:
 
-Training Performance Log OutputThe following diagnostic sequence demonstrates the engine successfully mapping a 3-feature input vector [1.0, 2.0, 3.0] to learn a multi-output target matrix [5.0, 10.0] over 50 epochs with a learning rate ($\alpha$) of 0.01:
+1. The Forward Pass (Making a Guess): The network takes your raw input features and multiplies them by its internal weights to create a combined signal. It then passes this signal through a filter (the ReLU activation function). This filter acts like a security guard: if a value is positive, it lets it pass right through; if a value is negative, it completely blocks it and changes it to zero. The final output is the network’s current "guess."
+
+2. Loss Computation (Measuring the Mistake): The engine compares the network's current guess against the true target answer. It calculates the difference to find out exactly how far off the guess was. This calculation generates an "error value" (the mistake), which acts as the initial spark or wake-up call needed to start the reverse cleanup process.
+
+3. Backpropagation (Distributing the Blame): This is the backtracking stage where the engine works in reverse using the chain rule. First, it looks back at the filter from Stage 1: if a neuron didn't fire (got blocked at zero), it completely kills the gradient for that path because that neuron didn't contribute to the mistake. For the pathways that did fire, it mathematically tracks the error backwards through your matrix. It cross-references the incoming mistake with the original inputs to calculate the exact amount of "blame" or responsibility that should be assigned to each individual weight parameter.
+
+4. Weight Optimization (Learning from the Mistake): Now that the engine knows exactly which weights caused the mistake, the optimizer takes over. It uses a setting called the "learning rate" to make small, controlled changes. It takes a percentage of the calculated blame and subtracts it from the current weights. This micro-adjustment nudges the weights in the right direction so that on the very next loop, the network's guess will automatically be slightly closer to the true answer
+
+# Training Performance
+Log OutputThe following diagnostic sequence demonstrates the engine successfully mapping a 3-feature input vector [1.0, 2.0, 3.0] to learn a multi-output target matrix [5.0, 10.0] over 50 epochs with a learning rate ($\alpha$) of 0.01:
 
 === TRAINING A COMPLETE C++ NEURAL NETWORK ===
 
@@ -45,12 +55,12 @@ Epoch 50 | Total Loss: 1.45246e-05 | Network Guess: [4.99781, 9.99508]
 
 === TRAINING COMPLETE! ===
 
-Observations from Diagnostics:
+# Observations from Diagnostics:
 Gradient Decay: The weight gradients smoothly decay down toward 0.0 as total loss drops, proving stable convergence.
 
 Feature Proportionality: The gradients for Row 1 and Row 2 maintain a perfect 2x and 3x ratio relative to Row 0, confirming that backpropagation accurately assigns error blame proportionally to input magnitudes.
 
-Core Code Overview
+# Core Code Overview
 Tensor::matmul: Custom matrix multiplier using row-major layout arithmetic (i * cols + j).
 
 Tensor::backward_relu: Element-wise conditional gradient gatekeeper (prevents dead updates).
