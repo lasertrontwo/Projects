@@ -16,10 +16,9 @@ The core engine is written in a single cell inside Google Colab. To save this co
 ### 2. Compilation & Execution Syntax
 To compile the exported source file using the GNU C++ Compiler (g++) and run the binary executable directly inside the Colab notebook interface, execute the following bash shell commands in a separate cell:
 
-# Compile the engine with optimizations
-!g++ -O3 -std=c++11 tensor_engine.cpp -o tensor_engine
-
-# Execute the compiled binary to view the training logs
+//Compile the engine with optimizations
+!g++ tensor_engine.cpp -o tensor_engine
+//Execute the compiled binary to view the training logs
 !./tensor_engine
 
 # Machine Learning Pipeline Blueprint
