@@ -9,7 +9,18 @@ A lightweight, high-performance C++ neural network engine built completely from 
 This project was natively developed and evaluated inside **Google Colab** using an interactive cell environment. Because Colab natively runs a Python kernel, specific notebook shell scripts and magic commands were used to compile and execute the raw C++ code.
 
 ### 1. Where the Code is Written
-The core engine is contained within a single interactive notebook cell. To export the C++ source code from the Python environment into Colab's local Linux container workspace, the cell must begin with the `%%writefile` command:
+This project was developed and tested inside **Google Colab**. Since Colab natively runs a Python environment, you use specific notebook commands to write, compile, and run the raw C++ code.
+
+### 1. Saving the C++ File
+The core engine is written in a single cell inside Google Colab. To save this code directly into Colab's local Linux cloud workspace, the very first line of the cell must use the `%%writefile` command:
+### 2. Compilation & Execution Syntax
+To compile the exported source file using the GNU C++ Compiler (g++) and run the binary executable directly inside the Colab notebook interface, execute the following bash shell commands in a separate cell:
+
+# Compile the engine with optimizations
+!g++ -O3 -std=c++11 tensor_engine.cpp -o tensor_engine
+
+# Execute the compiled binary to view the training logs
+!./tensor_engine
 
 # Machine Learning Pipeline Blueprint
 The engine runs a continuous loop that repeatedly processes data, checks for mistakes, figures out who to blame, and adjusts itself. This happens in four clear stages:
